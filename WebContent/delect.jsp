@@ -16,6 +16,15 @@
 <INPUT type="button" value="返回" onclick="location='index.jsp'">
 </head>
 <body>
+<%
+int id=Integer.parseInt(request.getParameter("id"));
+Connection conn=JDBCUtil.getConnection();
+String sql="delete from `order` where id=?";
+PreparedStatement pstmt=conn.prepareStatement(sql);
+pstmt.setObject(1, id);
+pstmt.executeUpdate();
+response.sendRedirect("index.jsp");
+%>
 
 </body>
 </html>
